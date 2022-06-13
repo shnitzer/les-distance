@@ -1,7 +1,7 @@
 # Log-Euclidean Signatures for Intrinsic Distances Between Unaligned Datasets
 
-Python implementation of the LES distance and examples from the [paper](https://arxiv.org/abs/2202.01671). LES is a
-geometric data-driven intrinsic measure for comparing unaligned datasets of different dimensions and domains.
+Python implementation of the LES distance and examples from the [paper](https://arxiv.org/abs/2202.01671). LES is an
+intrinsic geometric measure for comparing unaligned datasets of different dimensions and domains.
 
 ![LESdistance](LES.png)
 
