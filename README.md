@@ -26,32 +26,31 @@ The code was tested with python 3.8 and 3.9
 
 ### Distances between multi-cluster and single-cluster datasets of different dimensions
 
-.. code-block:: python
-
-    import numpy as np
-    import sklearn.datasets as skld
-	from les.les import les_desc_comp, les_dist_comp
+```python
+import numpy as np
+import sklearn.datasets as skld
+from les.les import les_desc_comp, les_dist_comp
+   
+np.random.seed(1)
+x1 = skld.make_blobs(n_samples=1000, centers=5, n_features=10)[0]
+x2 = skld.make_blobs(n_samples=1000, centers=5, n_features=9)[0]
+x3 = skld.make_blobs(n_samples=1000, centers=1, n_features=10)[0]
+  
+SIGMA, NEV, GAMMA = 2, 200, 1e-8     
+les_desc_x1 = les_desc_comp(x1, SIGMA, NEV, GAMMA)
+les_desc_x2 = les_desc_comp(x2, SIGMA, NEV, GAMMA)
+les_desc_x3 = les_desc_comp(x3, SIGMA, NEV, GAMMA)
     
-    np.random.seed(1)
-    x1 = skld.make_blobs(n_samples=1000, centers=5, n_features=10)[0]
-    x2 = skld.make_blobs(n_samples=1000, centers=5, n_features=9)[0]
-    x3 = skld.make_blobs(n_samples=1000, centers=1, n_features=10)[0]
-    
-    SIGMA, NEV, GAMMA = 2, 200, 1e-8     
-    les_desc_x1 = les_desc_comp(x1, SIGMA, NEV, GAMMA)
-    les_desc_x2 = les_desc_comp(x2, SIGMA, NEV, GAMMA)
-    les_desc_x3 = les_desc_comp(x3, SIGMA, NEV, GAMMA)
-    
-    print('LES(x1{5 clusters}, x2{5 clusters})=',les_dist_comp(les_desc_x1, les_desc_x2))
-    print('LES(x1{5 clusters}, x3{1 cluster})=',les_dist_comp(les_desc_x1, les_desc_x3))
-    print('LES(x2{5 clusters}, x3{1 cluster})=',les_dist_comp(les_desc_x2, les_desc_x3))
-
+print('LES(x1{5 clusters}, x2{5 clusters})=',les_dist_comp(les_desc_x1, les_desc_x2))
+print('LES(x1{5 clusters}, x3{1 cluster})=',les_dist_comp(les_desc_x1, les_desc_x3))
+print('LES(x2{5 clusters}, x3{1 cluster})=',les_dist_comp(les_desc_x2, les_desc_x3))
+```
 
 ### Running the tori example (Figure 1 in the paper)
 
-.. code-block:: python
-
-	main_tori.py
+```python
+main_tori.py
+```
 
 By default the code compares LES only with our implementation of IMD (our approach) to reduce run-time and code
 dependencies. To compare with additional algorithms that were mentioned in the paper, specify the algorithm names in `main_tori.py`, `ALGS2COMPARE`, and follow
