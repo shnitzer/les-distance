@@ -48,8 +48,8 @@ print('LES(x2{5 clusters}, x3{1 cluster})=',les_dist_comp(les_desc_x2, les_desc_
 
 ### Running the tori example (Figure 1 in the paper)
 
-```python
-main_tori.py
+```
+python les/main_tori.py
 ```
 
 By default the code compares LES only with our implementation of IMD (our approach) to reduce run-time and code
